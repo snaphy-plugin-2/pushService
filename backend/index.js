@@ -26,5 +26,5 @@ module.exports = function( server, databaseObj, helper, packageObj) {
 	return {
 		init: init,
 		push: push
-	}
+	};
 }; //module.exports

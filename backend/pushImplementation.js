@@ -9,22 +9,23 @@
 //This method returns the push service sendMessage send  method..
 module.exports = function(ApplicationModel, NotificationModel, PushModel) {
 
-    var badge = 1;
-    var sendMessage = function(app, message, registrationId, from, callback) {
-        var Application = ApplicationModel;
-        var PushModel = PushModel;
-        var Notification = NotificationModel;
+    let badge = 1;
+    let sendMessage = function(app, message, registrationId, from, callback) {
+        let Application = ApplicationModel;
+        let Push = PushModel;
+        let Notification = NotificationModel;
 
-        var note = new Notification({
-            expirationInterval: 3600, // Expires 1 hour from now.
+        let note = new Notification({
+            expirationInterval: 3600 * 24, // Expires 1 hour from now.
             badge: badge++,
-            //  sound: 'ping.aiff',
             message: message,
-            messageFrom: from
+            alert: message,
+            messageFrom: from,
+	        created: new Date()
         });
 
 
-        PushModel.notifyById(registrationId, note, function(err) {
+	    Push.notifyById(registrationId, note, function(err) {
             if (err) {
                 console.error('Cannot notify %j: %s', registrationId, err.stack);
                 return callback(err);

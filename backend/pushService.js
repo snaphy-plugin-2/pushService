@@ -1,20 +1,19 @@
 module.exports = function (app, notification, application, push, packageJSON) {
-  var Notification = notification;
-  var Application = application;
-  var PushModel = push;
+  let Notification = notification;
+  let Application = application;
+  let PushModel = push;
 
   /**
    * [startPushServer is a method at backend for registering push server and configuring]
    * @return {[type]} [description]
    */
   function startPushServer() {
-
     PushModel.on('error', function (err) {
       console.error('Push Notification error: ', err.stack);
     });
 
    
-    var snaphyApp = {
+    const snaphyApp = {
       id: packageJSON.PUSH_SERVICE_ID,
       userId: packageJSON.USER_ID,
       name: packageJSON.APP_NAME,
@@ -60,12 +59,15 @@ module.exports = function (app, notification, application, push, packageJSON) {
           where: { id: snaphyApp.id }
         },
         function (err, result) {
-          if (err) cb(err);
-          if (result) {
-            delete snaphyApp.id;
-            result.updateAttributes(snaphyApp, cb);
-          } else {
-            return registerApp(cb);
+          if (err) {
+            cb(err);
+          }else{
+	          if (result) {
+		          delete snaphyApp.id;
+		          result.updateAttributes(snaphyApp, cb);
+	          } else {
+		          return registerApp(cb);
+	          }
           }
         });
     }//updateOrCreate function

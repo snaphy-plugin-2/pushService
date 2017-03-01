@@ -72,6 +72,10 @@ $ yo snaphy:updateNpm
 ```
 
 
+#Future RoadMap
+1. Implement support for multiple push for user having multiple active devices logged in. Hint create a seperate model for storing registration id.
+
+
 
 
 
