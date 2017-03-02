@@ -10,6 +10,14 @@
 module.exports = function(ApplicationModel, NotificationModel, PushModel) {
 
     let badge = 1;
+	/**
+     * Send message to user..
+	 * @param app
+	 * @param message
+	 * @param registrationId
+	 * @param from
+	 * @param callback
+	 */
     let sendMessage = function(app, message, registrationId, from, callback) {
         let Application = ApplicationModel;
         let Push = PushModel;
@@ -20,8 +28,7 @@ module.exports = function(ApplicationModel, NotificationModel, PushModel) {
             badge: badge++,
             message: message,
             alert: message,
-            messageFrom: from,
-	        created: new Date()
+            messageFrom: from
         });
 
 

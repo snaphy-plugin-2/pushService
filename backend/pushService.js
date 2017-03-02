@@ -46,6 +46,18 @@ module.exports = function (app, notification, application, push, packageJSON) {
       console.log('Application id: %j', appModel.id);
     });
 
+    Application.observe("before save", function (ctx, next) {
+        const instance = ctx.instance || ctx.data;
+        if(instance){
+            if(instance.name){
+                if(instance.name === snaphyApp.name){
+                    instance.id = packageJSON.PUSH_SERVICE_ID;
+                }
+            }
+        }
+        next();
+    });
+
 
 
     //--- Helper functions ---
@@ -83,13 +95,14 @@ module.exports = function (app, notification, application, push, packageJSON) {
       console.log('Registering a new Application...');
       // Hack to set the app id to a fixed value so that we don't have to change
       // the client settings
-      Application.beforeSave = function (next) {
+
+      /*Application.beforeSave = function (next) {
         if (this.name === snaphyApp.name) {
           this.id = packageJSON.PUSH_SERVICE_ID;
         }
         next();
       };
-
+*/
       Application.register(
         snaphyApp.userId,
         snaphyApp.name,
