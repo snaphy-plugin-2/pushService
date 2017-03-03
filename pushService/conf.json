@@ -4,10 +4,10 @@
   "pluginDepedencies": {
 
   },
-  "PUSH_SERVICE_ID": "mapstrack-snaphy-push-application",
+  "PUSH_SERVICE_ID": "ainak-snaphy-push-application",
   "USER_ID": "strongloop",
-  "APP_NAME": "MapstrackPushNotification",
-  "GCM_SERVER_API_KEY" : "AIzaSyAjI6E3xT9SKO84W-0NL3zJCsx5eWrP1KU",
+  "APP_NAME": "AinakPushNotification",
+  "GCM_SERVER_API_KEY" : "xxxxxxxxxxxxxxxxxxxx",
   "APPLE_SETTINGS":{
     "apnsCertData":"",
     "apnsKeyData": ""
