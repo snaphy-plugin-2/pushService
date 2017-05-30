@@ -1,13 +1,11 @@
 {
   "js": {
-    "/pushService/scripts/routes/pushService.js": "pushServiceRoute",
-    "/pushService/scripts/controllers/pushService.js": "pushServiceController"
   },
   "moduleDependencies":{},
   "settings": ["/pushService/admin-panel-setting.js"],
   "bodystructure": {
     "asidebarHook": [],
-    "sidebarHook": ["/pushService/views/sidebarHook.html"],
+    "sidebarHook": [],
     "headerHook": [],
     "footerHook":[]
   }
