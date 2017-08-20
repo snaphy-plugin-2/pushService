@@ -43,7 +43,31 @@ module.exports = function(ApplicationModel, NotificationModel, PushModel) {
         });
     }; //sendMessage function
 
+    /**
+     * Notify push using user id.
+     * @param message
+     * @param userId
+     * @param from
+     * @param callback
+     */
+    const notifyByUserId = function (message, userId, from, callback) {
+        const Push = PushModel;
+
+        const note = new Notification({
+            expirationInterval: 3600 * 24, // Expires 1 hour from now.
+            badge: badge++,
+            message: message,
+            alert: message,
+            messageFrom: from
+        });
+
+        Push.notifyByQuery({userId: userId}, note, callback);
+    };
+
     //Returns SendMessage function to send Push message..
-    return sendMessage;
+    return {
+        sendMessage: sendMessage,
+        notifyByUserId: notifyByUserId
+    };
 
 };
