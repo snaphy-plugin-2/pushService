@@ -72,6 +72,19 @@ $ yo snaphy:updateNpm
 ```
 
 
+> `common/settings/pushService/conf.json`
+```
+"PUSH_SERVICE_ID": "easyPoints-snaphy-push-application",
+  "USER_ID": "snaphy",
+  "APP_NAME": "PUSH_APP_NAME",
+  "GCM_SERVER_API_KEY" : "AAAAOO-vEL8:APA91bGJKAXzK0isqCqNbrml0FRDSgpaLRZsKnJAtzxYlIGAPxf51gleMxMEl-4M9PhM7mo-effCnpNw7qQwFpu8HJAYXALjwzXU8g-J-Cruijv-w4WK7f69YLb6AYnNM80WtnY0FU6e",
+  "APPLE_SETTINGS":{
+    "apnsCertData":"",
+    "apnsKeyData": ""
+  },
+```
+>NOTE: PUSH_SERVICE_ID must be the same in both APP and Backend.
+
 #Future RoadMap
 1. Implement support for multiple push for user having multiple active devices logged in. Hint create a seperate model for storing registration id.
 
