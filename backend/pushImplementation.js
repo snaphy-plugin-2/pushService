@@ -52,7 +52,7 @@ module.exports = function(ApplicationModel, NotificationModel, PushModel) {
      */
     const notifyByUserId = function (message, userId, from, callback) {
         const Push = PushModel;
-
+        let Notification = NotificationModel;
         const note = new Notification({
             expirationInterval: 3600 * 24, // Expires 1 hour from now.
             badge: badge++,
